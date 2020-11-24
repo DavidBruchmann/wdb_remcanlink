@@ -10,10 +10,16 @@
            "homepage": "https://github.com/DavidBruchmann/"
         }
     ],
-    "homepage": "https://github.com/DavidBruchmann/wdb_remcanlink/",
+    "homepage": "https://davidbruchmann.github.io/wdb_remcanlink/",
     "support": {
         "issues": "https://github.com/DavidBruchmann/wdb_remcanlink/issues"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/DavidBruchmann/wdb_remcanlink/"
+        }
+    ],
     "license": ["GPL-2.0-or-later"],
     "keywords": ["seo", "canonical link"],
     "require": {

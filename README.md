@@ -8,6 +8,11 @@ Prerequisite:
 -------------
 On existing websites it's advised to have database access with a tool like **phpMyAdmin**.
 
+Requirements:
+-------------
+ - A working installation of TYPO3 Version 10.4.10 or higher
+ - Installed extension `seo`
+
 Installation:
 -------------
 Download from github:  
