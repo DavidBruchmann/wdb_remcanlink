@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:wdb_remcanlink/Resources/Private/Language/locallang_db.xlf" date="2020-11-24T20:52:35Z" product-name="wdb_remcanlink" target-language="es">
+		<header/>
+		<body>
+			<trans-unit id="pages.show_canonical">
+				<source>Show canonical link</source>
+				<target>Mostrar enlace canónico</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
