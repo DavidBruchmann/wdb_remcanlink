@@ -1,37 +1,49 @@
-## Welcome to GitHub Pages
+TYPO3 Extension "Remove Canonical Link"
+=======================================
 
-You can use the [editor on GitHub](https://github.com/DavidBruchmann/wdb_remcanlink/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This extension adds a switch in page-properties to avoid that the canonical link is
+shown on the page in the frontend. The setting is page-based without any inheritance.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Prerequisite:
+-------------
+On existing websites it's advised to have database access with a tool like **phpMyAdmin**.
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+Installation:
+-------------
+Download from github:  
+```
+composer require wdb/remove-canonical-link
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+In **Admin Tools** on the page **Maintenance** click on the button **Analyze database**
+and asure that the field `show_canonical` is added to the table `pages`.
 
-### Jekyll Themes
+There is no configuration required or possible.  
+The extension just works as long as it's installed.  
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/DavidBruchmann/wdb_remcanlink/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Important:
+----------
+The default setting for the new field `show_canonical` has the value `1` in the database.
+If this extension is used on existing websites all records have to be updated to have the
+value `1` in the new field:  
+```
+UPDATE pages SET show_canonical=1;
+```
+Afterwards the setting can be changed on individual pages.
 
-### Support or Contact
+On new pages the value for the new field `show_canonical` will be automatically `1` in the
+database and has to be adjusted if the canonical linke never shall be shown.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+How it's working?
+-----------------
+The extension extends the class `\TYPO3\CMS\Seo\Canonical\CanonicalGenerator` of the extension
+**seo** and is changing only the method `generate`. If the value `show_canonical` is `0` then
+an empty string for the canonical link is returned, else the orginial method of the parent
+class is called and everything works like defined in the seo-extension itself.  
+
+Translation
+-----------
+The one phrase that is shown in backend is translated by google-translate to all languages
+that are usually shown in the translation-tool. It's likely that there are faults or improvable 
+expressions. If you remark something like that, please file a corresponding issue on 
+https://github.com/DavidBruchmann/wdb_remcanlink/issues .
